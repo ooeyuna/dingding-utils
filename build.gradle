@@ -85,14 +85,14 @@ publishing {
 }
 
 bintray {
-    user = property("bintrayUser")
-    key = property("bintrayKey")
+    user = property("bintrayUser") ?: "xxxxx"
+    key = property("bintrayKey") ?: "xxxxx"
     publications = ['projectPublication']
     override = true
     pkg {
         repo = 'rika'
         name = project.name
-        userOrg = property("bintrayUser")
+        userOrg = property("bintrayUser") ?: "xxxxx"
         licenses = ['Apache-2.0']
         websiteUrl = 'https://github.com/ooeyuna/dingding-utils'
         issueTrackerUrl = 'https://github.com/ooeyuna/dingding-utils/issues'
