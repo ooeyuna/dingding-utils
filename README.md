@@ -21,7 +21,7 @@ repositories {
 
 ```groovy
 
-    compile "com.dingding.utils:dingding-utils:1.0"
+    compile "ooeyuna.rika:tools:1.0"
 
 ```
 
