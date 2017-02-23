@@ -1,4 +1,4 @@
-package com.dingding.utils
+package ooeyuna.rika.tools
 
 /**
  * Created by sanairika on 2017/02/22.

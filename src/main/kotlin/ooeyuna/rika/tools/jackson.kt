@@ -1,4 +1,4 @@
-package com.dingding.utils
+package ooeyuna.rika.tools
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.DeserializationFeature

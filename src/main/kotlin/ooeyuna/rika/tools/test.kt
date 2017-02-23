@@ -1,4 +1,4 @@
-package com.dingding.utils
+package ooeyuna.rika.tools
 
 import com.fasterxml.jackson.databind.JsonNode
 import org.powermock.api.mockito.PowerMockito.*

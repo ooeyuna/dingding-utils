@@ -1,4 +1,4 @@
-package com.dingding.utils
+package ooeyuna.rika.tools
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
