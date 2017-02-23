@@ -4,12 +4,3 @@ unit_test:
     - /opt/gradle/bin/gradle clean test
   tags:
     - java-dev
-
-deploy_repo:
-  stage: deploy
-  script:
-    - /opt/gradle/bin/gradle clean build bintrayUpload
-  only:
-    - master
-  tags:
-    - java-dev
