@@ -1,0 +1,15 @@
+unit_test:
+  stage: test
+  script:
+    - /opt/maven/bin/mvn -q clean compile test
+  tags:
+    - java-dev
+
+deploy_repo:
+  stage: deploy
+  script:
+    - /opt/maven/bin/mvn -q clean compile install deploy
+  only:
+    - master
+  tags:
+    - java-dev
