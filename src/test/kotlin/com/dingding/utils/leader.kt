@@ -18,7 +18,7 @@ class ZookeeperTest {
     Assert.assertTrue(true)
   }
 
-  @Test
+  //  @Test
   fun real_test() {
     val cd = CountDownLatch(10)
     10.downTo(1).forEachIndexed { index, i ->

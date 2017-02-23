@@ -6,19 +6,15 @@ buildscript {
     ext.jackson_version = "2.8.7"
 
     repositories {
-        maven {
-            credentials {
-                username artiUsername
-                password artiPassword
-            }
-            url "https://arti.gosun.cloud/artifactory/repository"
-        }
+        mavenLocal()
+        mavenCentral()
+        jcenter()
     }
     dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
-
 apply plugin: "kotlin"
 apply plugin: "idea"
 
@@ -39,24 +35,72 @@ dependencies {
     compile "org.powermock:powermock-module-junit4:1.6.5"
     compile "org.powermock:powermock-api-mockito2:1.6.5"
 
-    compile "com.squareup.okhttp3:okhttp:3.6.0"
-
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
     testCompile 'junit:junit:4.12'
 
 }
 repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    maven { url "https://jitpack.io" }
     maven {
-        credentials {
-            username artiUsername
-            password artiPassword
-        }
-        url "https://arti.gosun.cloud/artifactory/repository"
+        url "http://dl.bintray.com/ooeyuna/rika"
     }
+
 }
 task createJavaProject << {
     sourceSets*.java.srcDirs*.each { it.mkdirs() }
     sourceSets*.resources.srcDirs*.each { it.mkdirs() }
     sourceSets*.kotlin.srcDirs*.each { it.mkdirs() }
+}
+
+apply plugin: "maven"
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+    // don't include or exclude anything explicitly by default. See SPR-12085.
+}
+artifacts {
+    archives sourcesJar
+}
+
+publishing {
+    publications {
+
+        projectPublication(MavenPublication) {
+            groupId getGroup()
+            artifactId project.name
+            version '1.0'
+
+            from components.java
+
+            artifact sourcesJar
+        }
+    }
+}
+
+bintray {
+    user = property("bintrayUser")
+    key = property("bintrayKey")
+    publications = ['projectPublication']
+    override = true
+    pkg {
+        repo = 'rika'
+        name = project.name
+        userOrg = property("bintrayUser")
+        licenses = ['Apache-2.0']
+        websiteUrl = 'https://github.com/ooeyuna/dingding-utils'
+        issueTrackerUrl = 'https://github.com/ooeyuna/dingding-utils/issues'
+        vcsUrl = 'https://github.com/ooeyuna/dingding-utils.git'
+        publicDownloadNumbers = true
+        version {
+            name = "1.0"
+            desc = "micro service for kotlin"
+        }
+    }
 }
