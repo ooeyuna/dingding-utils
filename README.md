@@ -72,6 +72,19 @@ version 1.1.7
 
 ## mock test
 
+Test class must run with PowerMock
+
+example:
+
+```
+@PrepareForTest(fullyQualifiedNames = arrayOf("ooeyuna.rika.*"))
+@PowerMockIgnore("javax.management.*")
+@RunWith(PowerMockRunner::class)
+class TestForTestUtils {
+...
+}
+```
+
 mock object
 
 ```kotlin
