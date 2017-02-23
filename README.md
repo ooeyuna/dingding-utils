@@ -1,5 +1,30 @@
 # Kotlin Tools
 
+## Gradle Dependency
+
+1. add repo
+
+```groovy
+
+repositories {
+    mavenLocal()
+    maven {
+        url "http://dl.bintray.com/ooeyuna/rika"
+    }
+    jcenter()
+    mavenCentral()
+}
+
+```
+
+2. dependency
+
+```groovy
+
+    compile "com.dingding.utils:dingding-utils:1.0"
+
+```
+
 ## Exceptions
 
 For WebServer
