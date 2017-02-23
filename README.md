@@ -2,7 +2,7 @@
 
 ## Gradle Dependency
 
-1. add repo
+-  add repo
 
 ```groovy
 
@@ -17,7 +17,7 @@ repositories {
 
 ```
 
-2. dependency
+-  dependency
 
 ```groovy
 
