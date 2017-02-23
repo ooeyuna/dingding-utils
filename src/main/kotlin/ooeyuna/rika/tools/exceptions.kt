@@ -15,6 +15,8 @@ class Unauthorized(message: String) : WebError(401, message)
 
 class Forbidden(message: String) : WebError(403, message)
 
+class Conflict(message: String) : WebError(409, message)
+
 class Gone(message: String) : WebError(410, message)
 
 class ServerIntevalError() : WebError(500, "Server Error")
