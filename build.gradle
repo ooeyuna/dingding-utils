@@ -1,5 +1,5 @@
 group "ooeyuna.rika"
-version "1.0"
+version "1.2"
 
 buildscript {
     ext.kotlin_version = "1.0.6"
@@ -75,7 +75,7 @@ publishing {
         projectPublication(MavenPublication) {
             groupId getGroup()
             artifactId project.name
-            version '1.0'
+            version '1.2'
 
             from components.java
 
@@ -99,8 +99,8 @@ bintray {
         vcsUrl = 'https://github.com/ooeyuna/dingding-utils.git'
         publicDownloadNumbers = true
         version {
-            name = "1.0"
-            desc = "micro service for kotlin"
+            name = "1.2"
+            desc = "simple tools for kotlin"
         }
     }
 }

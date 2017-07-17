@@ -20,6 +20,7 @@ class ZkLeaderSelectorImpl(path: String
   private val leader = org.apache.curator.framework.recipes.leader.LeaderSelector(client, path, LeaderSelectorListener(sleep, tobe_master))
 
   init {
+    leader.autoRequeue()
     leader.start()
   }
 
